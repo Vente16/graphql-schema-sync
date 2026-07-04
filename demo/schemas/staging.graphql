@@ -1,0 +1,12 @@
+type Starship {
+  id: ID!
+  length(unit: LengthUnit = METER): Float
+}
+
+enum LengthUnit {
+  METER
+}
+
+type Query {
+  starship: Starship
+}

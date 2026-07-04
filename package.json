@@ -1,0 +1,136 @@
+{
+  "name": "graphql-schema-sync",
+  "version": "1.0.0",
+  "description": "Multi-environment GraphQL schema sync with compatibility-safe TypeScript codegen",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./runtime": {
+      "import": {
+        "types": "./dist/runtime.d.ts",
+        "default": "./dist/runtime.js"
+      },
+      "require": {
+        "types": "./dist/runtime.d.cts",
+        "default": "./dist/runtime.cjs"
+      }
+    },
+    "./apollo": {
+      "import": {
+        "types": "./dist/apollo.d.ts",
+        "default": "./dist/apollo.js"
+      },
+      "require": {
+        "types": "./dist/apollo.d.cts",
+        "default": "./dist/apollo.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "graphql-schema-sync": "./dist/cli.cjs"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "demo:serve": "node demo/server.mjs",
+    "demo:generate": "pnpm run build && node dist/cli.cjs generate --config demo/graphql-schema-sync.config.mjs --skip-codegen",
+    "demo": "node demo/run.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.ts\" \"*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" \"*.ts\" --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepublishOnly": "pnpm run build && pnpm run test"
+  },
+  "keywords": [
+    "graphql",
+    "schema",
+    "sync",
+    "codegen",
+    "typescript",
+    "environments",
+    "compatibility",
+    "graphql-codegen"
+  ],
+  "author": "Vente16 (https://github.com/Vente16)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vente16/graphql-schema-sync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Vente16/graphql-schema-sync/issues"
+  },
+  "homepage": "https://github.com/Vente16/graphql-schema-sync#readme",
+  "packageManager": "pnpm@10.17.1",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "graphql": "^16.14.2",
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "@apollo/client": ">=3.0.0",
+    "@graphql-codegen/cli": ">=5.0.0",
+    "@graphql-codegen/typescript": ">=4.0.0",
+    "@graphql-codegen/typescript-operations": ">=4.0.0",
+    "@graphql-codegen/typescript-react-apollo": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@apollo/client": {
+      "optional": true
+    },
+    "@graphql-codegen/cli": {
+      "optional": true
+    },
+    "@graphql-codegen/typescript": {
+      "optional": true
+    },
+    "@graphql-codegen/typescript-operations": {
+      "optional": true
+    },
+    "@graphql-codegen/typescript-react-apollo": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^7.1.3",
+    "@graphql-codegen/typescript": "^6.0.2",
+    "@graphql-codegen/typescript-operations": "^6.0.5",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.2",
+    "@types/node": "^26.1.0",
+    "@apollo/client": "^3.13.8",
+    "@typescript-eslint/eslint-plugin": "^8.46.0",
+    "@typescript-eslint/parser": "^8.46.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-unused-imports": "^4.2.0",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  }
+}
