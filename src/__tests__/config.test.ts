@@ -53,7 +53,7 @@ describe('resolveEnvironments', () => {
         }
       },
       baseEnvironment: 'develop',
-      headers: { 'X-App': 'graphql-schema-sync' },
+      headers: { 'X-App': 'graphql-schema-env-sync' },
       output: {
         compatSchema: './a.graphql',
         types: './b.ts',
@@ -67,7 +67,7 @@ describe('resolveEnvironments', () => {
     expect(resolved[0].name).toBe('production');
     expect(resolved[1].name).toBe('develop');
     expect(resolved[1].headers).toEqual({
-      'X-App': 'graphql-schema-sync',
+      'X-App': 'graphql-schema-env-sync',
       Authorization: 'Bearer dev'
     });
   });
@@ -98,6 +98,6 @@ describe('loadConfig', () => {
   it('throws when environments object is empty', async () => {
     await expect(
       loadConfig(resolve(fixturesDir, 'invalid-empty-envs-config.mjs'))
-    ).rejects.toThrow('Invalid graphql-schema-sync config');
+    ).rejects.toThrow('Invalid graphql-schema-env-sync config');
   });
 });

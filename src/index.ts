@@ -49,7 +49,7 @@ export async function generate(
   const cwd = options.cwd ?? process.cwd();
   const configPath = resolve(
     cwd,
-    options.configPath ?? 'graphql-schema-sync.config.ts'
+    options.configPath ?? 'graphql-schema-env-sync.config.ts'
   );
   const config = await loadConfig(configPath);
   const environments = resolveEnvironments(config);

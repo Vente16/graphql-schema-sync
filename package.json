@@ -1,6 +1,6 @@
 {
-  "name": "graphql-schema-sync",
-  "version": "1.0.0",
+  "name": "graphql-schema-env-sync",
+  "version": "1.0.1",
   "description": "Multi-environment GraphQL schema sync with compatibility-safe TypeScript codegen",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -40,7 +40,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "graphql-schema-sync": "./dist/cli.cjs"
+    "graphql-schema-env-sync": "dist/cli.cjs"
   },
   "files": [
     "dist",
@@ -53,7 +53,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "demo:serve": "node demo/server.mjs",
-    "demo:generate": "pnpm run build && node dist/cli.cjs generate --config demo/graphql-schema-sync.config.mjs --skip-codegen",
+    "demo:generate": "pnpm run build && node dist/cli.cjs generate --config demo/graphql-schema-env-sync.config.mjs --skip-codegen",
     "demo": "node demo/run.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"src/**/*.ts\" \"*.ts\"",
@@ -76,12 +76,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vente16/graphql-schema-sync.git"
+    "url": "git+https://github.com/Vente16/graphql-schema-env-sync.git"
   },
   "bugs": {
-    "url": "https://github.com/Vente16/graphql-schema-sync/issues"
+    "url": "https://github.com/Vente16/graphql-schema-env-sync/issues"
   },
-  "homepage": "https://github.com/Vente16/graphql-schema-sync#readme",
+  "homepage": "https://github.com/Vente16/graphql-schema-env-sync#readme",
   "packageManager": "pnpm@10.17.1",
   "engines": {
     "node": ">=18"

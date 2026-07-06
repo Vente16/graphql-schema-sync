@@ -1,4 +1,4 @@
-# graphql-schema-sync
+# graphql-schema-env-sync
 
 Sync GraphQL schemas across multiple environments and generate **compatibility-safe** TypeScript types for apps that switch GraphQL endpoints at runtime.
 
@@ -70,16 +70,16 @@ TypeScript types then treat `name` and `length` as optional when they are not pr
 
 ### Core (schema sync, reports, helpers)
 
-Installs `graphql-schema-sync` plus its runtime dependencies (`graphql`, `commander`, `zod`). Codegen packages are **not** installed.
+Installs `graphql-schema-env-sync` plus its runtime dependencies (`graphql`, `commander`, `zod`). Codegen packages are **not** installed.
 
 ```bash
-pnpm add -D graphql-schema-sync
+pnpm add -D graphql-schema-env-sync
 ```
 
 Run without TypeScript/Apollo codegen:
 
 ```bash
-pnpm graphql-schema-sync generate --skip-codegen
+pnpm graphql-schema-env-sync generate --skip-codegen
 ```
 
 Outputs: `schema.compat.graphql`, `compat-report.json`, `compat-report.html`, and `defaults.ts`.
@@ -89,7 +89,7 @@ Outputs: `schema.compat.graphql`, `compat-report.json`, `compat-report.html`, an
 Add `@graphql-codegen/*` only if you want `graphql.tsx` with types and hooks:
 
 ```bash
-pnpm add -D graphql-schema-sync \
+pnpm add -D graphql-schema-env-sync \
   @graphql-codegen/cli \
   @graphql-codegen/typescript \
   @graphql-codegen/typescript-operations \
@@ -101,15 +101,15 @@ Then run the full generate (see [Quick start](#quick-start)) without `--skip-cod
 Also works with npm or yarn:
 
 ```bash
-npm install -D graphql-schema-sync
+npm install -D graphql-schema-env-sync
 ```
 
 ## Quick start
 
-Create `graphql-schema-sync.config.ts`:
+Create `graphql-schema-env-sync.config.ts`:
 
 ```ts
-import type { SchemaSyncConfig } from 'graphql-schema-sync';
+import type { SchemaSyncConfig } from 'graphql-schema-env-sync';
 
 const config: SchemaSyncConfig = {
   environments: {
@@ -157,7 +157,7 @@ environments: {
 Run (with codegen packages installed):
 
 ```bash
-pnpm graphql-schema-sync generate
+pnpm graphql-schema-env-sync generate
 ```
 
 Core-only install — use `--skip-codegen` as shown in [Install](#install).
@@ -167,7 +167,7 @@ Or from `package.json`:
 ```json
 {
   "scripts": {
-    "generate:graphql": "graphql-schema-sync generate"
+    "generate:graphql": "graphql-schema-env-sync generate"
   }
 }
 ```
@@ -297,13 +297,13 @@ Use `filterOperationArgs` when you build variables in TypeScript. For dev-only a
 
 ### Runtime environment switching (Apollo Client)
 
-`filterOperationArgs` only strips **variables**. If your query document still requests fields or args that staging does not support, the server will reject the request. After `graphql-schema-sync generate`, `defaults.ts` also exports `adaptDocumentForEnvironment()` which rewrites the GraphQL document AST for the active environment — removing unsupported root operations, args, and selection fields.
+`filterOperationArgs` only strips **variables**. If your query document still requests fields or args that staging does not support, the server will reject the request. After `graphql-schema-env-sync generate`, `defaults.ts` also exports `adaptDocumentForEnvironment()` which rewrites the GraphQL document AST for the active environment — removing unsupported root operations, args, and selection fields.
 
 Wire it with an Apollo Link so every request is adapted when the user changes environment:
 
 ```ts
 import { ApolloClient, HttpLink, InMemoryCache, from } from '@apollo/client';
-import { createEnvironmentCompatLink } from 'graphql-schema-sync/apollo';
+import { createEnvironmentCompatLink } from 'graphql-schema-env-sync/apollo';
 import {
   environmentCompatHelpers,
   normalizeMovie,
@@ -351,7 +351,7 @@ If you see console errors like **`Missing field 'language' while writing result`
 
 1. **`environmentCompatHelpers` is passed** — not just `adaptDocumentForEnvironment` alone
 2. **Compat link is before `HttpLink`** — `from([compatLink, httpLink])`
-3. **Regenerated `defaults.ts`** after updating `graphql-schema-sync`
+3. **Regenerated `defaults.ts`** after updating `graphql-schema-env-sync`
 4. **Cleared Vite cache** — `rm -rf node_modules/.vite`
 5. **`client.resetStore()`** when switching environments
 
@@ -363,24 +363,24 @@ const movies = data?.getMovies?.map(normalizeMovie) ?? [];
 
 Write queries against your **base environment** (the richest schema). The link adapts them downward for older environments automatically.
 
-Optional: install `@apollo/client` only if you use the Apollo link. The runtime adapter lives in `graphql-schema-sync/runtime` if you use another client.
+Optional: install `@apollo/client` only if you use the Apollo link. The runtime adapter lives in `graphql-schema-env-sync/runtime` if you use another client.
 
 ## Programmatic API
 
 ```ts
-import { generate } from 'graphql-schema-sync';
+import { generate } from 'graphql-schema-env-sync';
 
 await generate({
-  configPath: './graphql-schema-sync.config.ts'
+  configPath: './graphql-schema-env-sync.config.ts'
 });
 ```
 
 ## CLI
 
 ```bash
-graphql-schema-sync generate
-graphql-schema-sync generate --config ./graphql-schema-sync.config.ts
-graphql-schema-sync generate --skip-codegen
+graphql-schema-env-sync generate
+graphql-schema-env-sync generate --config ./graphql-schema-env-sync.config.ts
+graphql-schema-env-sync generate --skip-codegen
 ```
 
 ## Config reference

@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a problem with graphql-schema-sync
+about: Report a problem with graphql-schema-env-sync
 title: ''
 labels: bug
 assignees: ''
@@ -22,7 +22,7 @@ assignees: ''
 
 ## npm version
 
-<!-- Output of: npm list graphql-schema-sync (or pnpm list graphql-schema-sync) -->
+<!-- Output of: npm list graphql-schema-env-sync (or pnpm list graphql-schema-env-sync) -->
 
 ```text
 

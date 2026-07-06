@@ -12,6 +12,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "graphql-schema-sync.config.example.ts"],
+  "include": ["src/**/*", "graphql-schema-env-sync.config.example.ts"],
   "exclude": ["node_modules", "dist"]
 }

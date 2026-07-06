@@ -104,7 +104,7 @@ describe('generated compatibility helpers', () => {
     const { join } = await import('node:path');
     const { pathToFileURL } = await import('node:url');
     const tempDir = await mkdtemp(
-      join(tmpdir(), 'graphql-schema-sync-defaults-')
+      join(tmpdir(), 'graphql-schema-env-sync-defaults-')
     );
     const helperPath = join(tempDir, 'defaults.ts');
 

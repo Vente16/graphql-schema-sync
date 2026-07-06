@@ -5,7 +5,7 @@ import { generate } from './index.js';
 const program = new Command();
 
 program
-  .name('graphql-schema-sync')
+  .name('graphql-schema-env-sync')
   .description(
     'Sync GraphQL schemas across environments and generate compatibility types'
   )
@@ -19,7 +19,7 @@ program
   .option(
     '-c, --config <path>',
     'Path to config file',
-    'graphql-schema-sync.config.ts'
+    'graphql-schema-env-sync.config.ts'
   )
   .option('--skip-codegen', 'Only generate compat schema, report, and defaults')
   .action(async (options: { config: string; skipCodegen?: boolean }) => {
@@ -41,7 +41,7 @@ program
       console.log(`Environment differences found in ${diffCount} field(s).`);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      console.error(`graphql-schema-sync failed: ${message}`);
+      console.error(`graphql-schema-env-sync failed: ${message}`);
       process.exitCode = 1;
     }
   });

@@ -28,7 +28,7 @@ describe('generate', () => {
       });
     vi.stubGlobal('fetch', fetchMock);
 
-    const tempDir = await mkdtemp(join(tmpdir(), 'graphql-schema-sync-'));
+    const tempDir = await mkdtemp(join(tmpdir(), 'graphql-schema-env-sync-'));
     const configPath = join(tempDir, 'config.mjs');
 
     await writeFile(

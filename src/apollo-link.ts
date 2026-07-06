@@ -56,7 +56,7 @@ export function createEnvironmentCompatLink(
 
   if (!helpers.typeFieldAvailability) {
     console.warn(
-      '[graphql-schema-sync] Pass environmentCompatHelpers from generated defaults.ts. ' +
+      '[graphql-schema-env-sync] Pass environmentCompatHelpers from generated defaults.ts. ' +
         'Without typeFieldAvailability, Apollo cache error 13 ("Missing field … while writing result") ' +
         'will occur when switching to staging.'
     );

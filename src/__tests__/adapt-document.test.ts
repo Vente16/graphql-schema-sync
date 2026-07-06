@@ -167,6 +167,6 @@ describe('adaptDocument', () => {
     expect(defaults).toContain('export function adaptDocumentForEnvironment');
     expect(defaults).toContain('export const environmentCompatHelpers');
     expect(defaults).not.toContain('padOperationResponse');
-    expect(defaults).toContain("from 'graphql-schema-sync/runtime'");
+    expect(defaults).toContain("from 'graphql-schema-env-sync/runtime'");
   });
 });

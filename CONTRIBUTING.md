@@ -1,4 +1,4 @@
-# Contributing to graphql-schema-sync
+# Contributing to graphql-schema-env-sync
 
 Thank you for your interest in contributing. This document covers how to get set up and submit changes.
 
@@ -8,7 +8,7 @@ Requirements: Node.js 18+, [pnpm](https://pnpm.io/).
 
 ```bash
 git clone <repository-url>
-cd graphql-schema-sync
+cd graphql-schema-env-sync
 pnpm install
 pnpm run build
 pnpm test
@@ -46,7 +46,7 @@ Use the [bug report template](.github/ISSUE_TEMPLATE/bug_report.md) and include:
 - A clear **description**
 - **Context** (environment, config, what you expected)
 - **Steps to reproduce**
-- **npm version** of `graphql-schema-sync`
+- **npm version** of `graphql-schema-env-sync`
 
 ## Code style
 

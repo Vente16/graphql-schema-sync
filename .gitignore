@@ -6,3 +6,4 @@ dist/
 coverage/
 generated/
 demo/generated/
+.graphql-schema-env-sync/

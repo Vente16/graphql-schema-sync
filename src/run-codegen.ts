@@ -81,7 +81,7 @@ async function writeTempCodegenConfig(
   cwd: string,
   config: Record<string, unknown>
 ): Promise<string> {
-  const tempDir = join(cwd, '.graphql-schema-sync');
+  const tempDir = join(cwd, '.graphql-schema-env-sync');
   await mkdir(tempDir, { recursive: true });
   const tempConfigPath = join(tempDir, 'codegen.cjs');
   const content = `module.exports = ${JSON.stringify(config, null, 2)};\n`;

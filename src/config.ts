@@ -54,7 +54,7 @@ export async function loadConfig(
     const issues = parsed.error.issues
       .map(i => `${i.path.join('.')}: ${i.message}`)
       .join('\n');
-    throw new Error(`Invalid graphql-schema-sync config:\n${issues}`);
+    throw new Error(`Invalid graphql-schema-env-sync config:\n${issues}`);
   }
 
   const config = parsed.data;
