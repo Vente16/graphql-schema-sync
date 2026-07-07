@@ -1,11 +1,21 @@
 {
   "name": "graphql-schema-env-sync",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Multi-environment GraphQL schema sync with compatibility-safe TypeScript codegen",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "runtime": [
+        "./dist/runtime.d.ts"
+      ],
+      "apollo": [
+        "./dist/apollo.d.ts"
+      ]
+    }
+  },
   "exports": {
     ".": {
       "import": {
@@ -44,6 +54,10 @@
   },
   "files": [
     "dist",
+    "runtime.js",
+    "runtime.d.ts",
+    "apollo.js",
+    "apollo.d.ts",
     "README.md",
     "LICENSE"
   ],
